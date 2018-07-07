@@ -1,0 +1,1 @@
+{% extends "global/Page.html" %}{% load staticfiles otree_tags %}{% block title %}        Results{% endblock %}{% block content %}    <table class="table table-stiped table-hover">    <tr>        <td>Your role was:</td>        <td>{{ player.role }}</td>    </tr>    {%  if player.role=='' %}    </table>    {% next_button %}{% endblock %}

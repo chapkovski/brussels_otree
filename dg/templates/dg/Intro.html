@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Dictator's game: Instructions
+{% endblock %}
+
+{% block content %}
+    {% formfield player.gender %}
+    {% include 'dg/instructions.html' %}
+    {% next_button %}
+
+{% endblock %}

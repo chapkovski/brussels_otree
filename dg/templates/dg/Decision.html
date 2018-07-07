@@ -1,0 +1,21 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Make your decision about sending money
+{% endblock %}
+
+{% block content %}
+    {% if session.config.treatment_gender  %}
+        <div class="alert alert-info">
+            Your recipient is {{ gender }}
+        </div>
+    {% endif %}
+    <div class="alert alert-info">
+        You are chosen as a <strong>{{ player.role }}</strong> in this game.
+    </div>
+    {% include 'dg/instructions.html' %}
+    {% formfield group.dg_decision %}
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+{% block title %} Final Results {% endblock %}
+
+{% block content %}
+    {% include 'pgg/finalresultstable.html' %}
+    {% next_button %}
+{% endblock %}
