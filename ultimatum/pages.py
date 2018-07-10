@@ -5,7 +5,7 @@ from .models import Constants
 
 
 class Introduction(Page):
-    timeout_seconds = 600
+    ...
 
 
 class Offer(Page):
@@ -13,9 +13,8 @@ class Offer(Page):
     form_fields = ['amount_offered']
 
     def is_displayed(self):
-        return self.player.role() == 'sender'
+        return self.player.role() == 'proposer'
 
-    timeout_seconds = 600
 
 
 class WaitForProposer(WaitPage):
@@ -27,9 +26,8 @@ class Accept(Page):
     form_fields = ['offer_accepted']
 
     def is_displayed(self):
-        return self.player.role() == 'receiver'
+        return self.player.role() == 'responder'
 
-    timeout_seconds = 600
 
 
 class ResultsWaitPage(WaitPage):

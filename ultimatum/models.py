@@ -13,18 +13,9 @@ class Constants(BaseConstants):
     name_in_url = 'ultimatum'
     players_per_group = 2
     num_rounds = 1
-
     instructions_template = 'ultimatum/Instructions.html'
-
     endowment = c(100)
     payoff_if_rejected = c(0)
-    offer_increment = c(10)
-
-    offer_choices = currency_range(0, endowment, offer_increment)
-    offer_choices_count = len(offer_choices)
-    keep_give_amounts = []
-    for offer in offer_choices:
-        keep_give_amounts.append((offer, endowment - offer))
 
 
 class Subsession(BaseSubsession):
@@ -32,28 +23,29 @@ class Subsession(BaseSubsession):
 
 
 class Group(BaseGroup):
-    amount_offered = models.CurrencyField(choices=Constants.offer_choices)
+    amount_offered = models.CurrencyField()
 
     offer_accepted = models.BooleanField(
         doc="if offered amount is accepted",
         widget=widgets.RadioSelectHorizontal,
+        choices = ((True, 'Accept'), (False, 'Reject'),)
     )
 
     def set_payoffs(self):
-        sender = self.get_player_by_role('sender')
-        receiver = self.get_player_by_role('receiver')
+        proposer = self.get_player_by_role('proposer')
+        responder = self.get_player_by_role('responder')
         if self.offer_accepted:
-            sender.payoff = Constants.endowment - self.amount_offered
-            receiver.payoff = self.amount_offered
+            proposer.payoff = Constants.endowment - self.amount_offered
+            responder.payoff = Constants.endowment  + self.amount_offered
         else:
-            sender.payoff = Constants.payoff_if_rejected
-            receiver.payoff = Constants.payoff_if_rejected
+            proposer.payoff = Constants.payoff_if_rejected
+            responder.payoff = Constants.payoff_if_rejected
 
 
 class Player(BasePlayer):
     def role(self):
         # the first player receives a role of sender, and the second one becomes a receiver
         if self.id_in_group == 1:
-            return 'sender'
+            return 'proposer'
         else:
-            return 'receiver'
+            return 'responder'

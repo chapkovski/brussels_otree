@@ -12,12 +12,7 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    {
-        'name': 'myotreeapp',
-        'display_name': "My first app",
-        'num_demo_participants': 4,
-        'app_sequence': ['myotreeapp'],
-    },
+
     {
         'name': 'public_goods',
         'display_name': "Public Goods Game",
@@ -43,22 +38,11 @@ SESSION_CONFIGS = [
         'app_sequence': ['dg_gender'],
         'treatment_gender': True,
     },
-    {
-        'name': 'charity',
-        'display_name': "Charity - individual vs. collective",
-        'num_demo_participants': 1,
-        'app_sequence': ['charity'],
-    },
-    {
-        'name': 'political',
-        'display_name': "Political diversity",
-        'num_demo_participants': 1,
-        'app_sequence': ['political'],
-    },
+
     {
         'name': 'ultimatum',
         'display_name': "Ultimatum game",
-        'num_demo_participants': 1,
+        'num_demo_participants': 2,
         'app_sequence': ['ultimatum'],
     },
     {

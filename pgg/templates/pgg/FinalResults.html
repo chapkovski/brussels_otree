@@ -1,8 +1,15 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree_tags %}
+{% load static otree %}
 {% block title %} Final Results {% endblock %}
 
 {% block content %}
-    {% include 'pgg/finalresultstable.html' %}
+    <table class="table table-hover table-striped">
+        <tbody>
+        <tr>
+            <td>Your final payoff:</td>
+            <td><strong>{{ participant.payoff }}</strong></td>
+        </tr>
+        </tbody>
+    </table>
     {% next_button %}
 {% endblock %}
