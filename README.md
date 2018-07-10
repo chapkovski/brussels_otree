@@ -11,6 +11,4 @@ During the workshop we develop a set of very simple games:
 
 * Public good game
 
-* Public good game with treatments
 
-* Surveys
