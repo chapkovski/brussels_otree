@@ -7,14 +7,15 @@ import random
 author = 'Philipp Chapkovski, chapkovski@gmail.com'
 
 doc = """
-Dictator game
+Dictator game with the possibility of gender treatment.
+In gender treatment the Dictators receive an information about the gender of Receivers.
 """
 
 
 class Constants(BaseConstants):
     # ==============
     # oTree constants
-    name_in_url = 'dg'
+    name_in_url = 'dg_gender'
     players_per_group = 2
     num_rounds = 1
     # ==============
@@ -23,8 +24,12 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
-    ...
-
+    treatment = models.StringField()
+    def creating_session(self):
+        if self.session.config.get('treatment_gender'):
+            self.treatment = 'gender'
+        else:
+            self.treatment = 'baseline'
 
 class Group(BaseGroup):
     # we store the dictator's decision on group level because it is valid for both players in group
@@ -41,6 +46,15 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    # we would like to show to a Dictator (in some treatments) the gender of a Receiver
+    # To test if gender affects the amount of donation
+    gender = models.IntegerField(choices=
+                                 ((0, 'Female'),
+                                  (1, 'Male')),
+                                 widget=widgets.RadioSelectHorizontal,
+                                 label='What is your gender?'
+                                 )
+
     def role(self):
         # the first player receives a role of dictator, and the second one becomes a receiver
         if self.id_in_group == 1:

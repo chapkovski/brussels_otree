@@ -12,14 +12,63 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    #{
-    #    'name': 'public_goods',
-    #    'display_name': "Public Goods",
-    #    'num_demo_participants': 3,
-    #    'app_sequence': ['public_goods', 'payment_info'],
-    #},
-]
+    {
+        'name': 'myotreeapp',
+        'display_name': "My first app",
+        'num_demo_participants': 4,
+        'app_sequence': ['myotreeapp'],
+    },
+    {
+        'name': 'public_goods',
+        'display_name': "Public Goods Game",
+        'num_demo_participants': 3,
+        'app_sequence': ['pgg'],
+    },
+    {
+        'name': 'dg',
+        'display_name': "Dictator's game",
+        'num_demo_participants': 2,
+        'app_sequence': ['dg'],
+    },
+    {
+        'name': 'dg_gender_off',
+        'display_name': "Dictator's game - gender, baseline",
+        'num_demo_participants': 2,
+        'app_sequence': ['dg_gender'],
+    },
+    {
+        'name': 'dg_gender_on',
+        'display_name': "Dictator's game - gender, gender treatment",
+        'num_demo_participants': 2,
+        'app_sequence': ['dg_gender'],
+        'treatment_gender': True,
+    },
+    {
+        'name': 'charity',
+        'display_name': "Charity - individual vs. collective",
+        'num_demo_participants': 1,
+        'app_sequence': ['charity'],
+    },
+    {
+        'name': 'political',
+        'display_name': "Political diversity",
+        'num_demo_participants': 1,
+        'app_sequence': ['political'],
+    },
+    {
+        'name': 'ultimatum',
+        'display_name': "Ultimatum game",
+        'num_demo_participants': 1,
+        'app_sequence': ['ultimatum'],
+    },
+    {
+        'name': 'guess_random',
+        'display_name': "Guess random number game",
+        'num_demo_participants': 1,
+        'app_sequence': ['guess_random'],
+    },
 
+]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
@@ -30,7 +79,6 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = []
-
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
@@ -48,7 +96,6 @@ AUTH_LEVEL = environ.get('OTREE_AUTH_LEVEL')
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
-
 
 # Consider '', None, and '0' to be empty/false
 DEBUG = (environ.get('OTREE_PRODUCTION') in {None, '', '0'})

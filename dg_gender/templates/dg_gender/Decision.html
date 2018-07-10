@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+    {% if subsession.treatment == 'gender'  %}
+        <div class="alert alert-info">
+            Your recipient is a {{ gender }}
+        </div>
+    {% endif %}
     <div class="alert alert-info">
         You are chosen as a <strong>{{ player.role }}</strong> in this game.
     </div>

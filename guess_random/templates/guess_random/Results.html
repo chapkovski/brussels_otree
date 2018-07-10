@@ -6,16 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div>
-    Name: {{ name }}
-    </div>
-    <div>
-    Heigth: {{ height }}
-    </div>
-    <div>
-    Political views: {{ politicalview }}
-    </div>
-    Your decision was: {{ player.guess }}
+
     <table class="table table-hover table-striped">
         <tr>
             <td>The number the computer generated was:</td>
@@ -31,7 +22,7 @@
         </tr>
         <tr>
             <td>Your final earning is:</td>
-            <th>{{ player.payoff }}</th>
+            <th>{{ Constants.endowment }} - {{ player.diff }} = {{ player.payoff }}</th>
         </tr>
     </table>
     {% next_button %}
